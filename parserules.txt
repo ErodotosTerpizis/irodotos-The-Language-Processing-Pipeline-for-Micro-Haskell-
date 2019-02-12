@@ -1,0 +1,16 @@
+Prog->EPSILON | Decl Prog
+Decl-> TypeDecl TermDecl
+TypeDecl->VAR :: Type ;
+Type->Type0 TypeRest
+TypeRest->EPSILON |  -> Type
+Type0-> Integer | Bool | ( Type )
+TermDecl->VAR Args = Exp ;
+Args->EPSILON|VAR Args
+Exp->Exp0| if Exp then Exp else Exp
+Exp0->Exp1 Rest0
+Rest0->EPSILON | == Exp1| <= Exp1
+Exp1->Exp2 Rest1
+Rest1->EPSILON| + Exp2 Rest1 | - Exp2 Rest1
+Exp2-> Exp3 Rest2
+Rest2->EPSILON| Exp3 Rest2
+Exp3-> VAR | NUM | BOOLEAN | ( Exp )
